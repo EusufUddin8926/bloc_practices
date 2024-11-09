@@ -13,6 +13,6 @@ class SwitchBloc extends Bloc<SwitchEvent, SwitchState> {
   }
 
   void _slider(SliderEvent event, Emitter<SwitchState> emit) {
-    emit(state.copyWith(mSlider: event.slider));
+    emit(state.copyWith(mSlider: event.slider.toDouble()));
   }
 }

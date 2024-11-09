@@ -37,7 +37,6 @@ class _SwitchScreenState extends State<SwitchScreen> {
                     return Switch(
                         value: state.isSwich,
                         onChanged: (newValue) {
-                          print('SwitchSSSSSSSSSSSSSSSSSSSSSSSSSS');
                           context.read<SwitchBloc>().add(EnableOrDisableNotification());
                         });
                   },
@@ -67,7 +66,6 @@ class _SwitchScreenState extends State<SwitchScreen> {
               return Slider(
                   value: state.slider,
                   onChanged: (value) {
-                    print('Slidderrrrrrrrrrrrrrrr');
                     context.read<SwitchBloc>().add(SliderEvent(slider: value));
                   });
             },
