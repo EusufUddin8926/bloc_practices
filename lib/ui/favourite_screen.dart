@@ -1,5 +1,6 @@
 import 'package:counter_bloc/bloc/favourite_app/favourite_state.dart';
 import 'package:counter_bloc/bloc/favourite_app/favoutite_bloc.dart';
+import 'package:counter_bloc/model/favourite_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,10 +37,20 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
             return ListView.builder(
               itemCount: states.favouiteItemList.length,
               itemBuilder: (context, index) {
+                final item = states.favouiteItemList[index];
                 return Card(
                   child: ListTile(
                     title: Text(states.favouiteItemList[index].value.toString()),
-                    trailing: const Icon(Icons.favorite_outline),
+                    trailing: InkWell(
+                        onTap: () async {
+                          FavouriteItemModel favouriteItemModel = FavouriteItemModel(
+                              id: states.favouiteItemList[index].id,
+                              value: states.favouiteItemList[index].value,
+                              isFavourite: states.favouiteItemList[index].isFavourite ? false : true,
+                              isDeleting: states.favouiteItemList[index].isDeleting);
+                          context.read<FavouriteItemBloc>().add(FavouriteItem(favouriteItemModel: favouriteItemModel));
+                        },
+                        child: item.isFavourite ? const Icon(Icons.favorite) : const Icon(Icons.favorite_outline)),
                   ),
                 );
               },
