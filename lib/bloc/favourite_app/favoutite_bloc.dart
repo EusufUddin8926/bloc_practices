@@ -25,8 +25,22 @@ class FavouriteItemBloc extends Bloc<FavouriteEvents, FavouriteItemStates> {
 
   void _addFavouriteItem(FavouriteItem event, Emitter<FavouriteItemStates> emit) async {
     int index = favouriteItemList.indexWhere((element) => element.id == event.favouriteItemModel.id);
+
+    if (event.favouriteItemModel.isFavourite) {
+      if (temFavouriteItemList.contains(favouriteItemList[index])) {
+        temFavouriteItemList.remove(favouriteItemList[index]);
+        temFavouriteItemList.add(event.favouriteItemModel);
+      }
+    } else {
+      if (temFavouriteItemList.contains(favouriteItemList[index])) {
+        temFavouriteItemList.remove(favouriteItemList[index]);
+        temFavouriteItemList.add(event.favouriteItemModel);
+      }
+    }
+
     favouriteItemList[index] = event.favouriteItemModel;
-    emit(state.copyWith(favouiteItemList: List.from(favouriteItemList)));
+    emit(state.copyWith(
+        favouiteItemList: List.from(favouriteItemList), temfavouiteItemList: List.from(temFavouriteItemList)));
   }
 
   void _selectItemEvent(SelectItemEvent event, Emitter<FavouriteItemStates> emit) async {
