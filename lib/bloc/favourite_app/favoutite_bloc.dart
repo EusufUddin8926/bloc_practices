@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:counter_bloc/bloc/favourite_app/favourite_state.dart';
 import 'package:counter_bloc/model/favourite_item_model.dart';
-import 'package:counter_bloc/repository/FavouriteRepository.dart';
+import 'package:counter_bloc/repository/favourite_repository.dart';
 
 import 'favourite_event.dart';
 
