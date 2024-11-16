@@ -15,3 +15,17 @@ class FavouriteItem extends FavouriteEvents {
 
   const FavouriteItem({required this.favouriteItemModel});
 }
+
+class SelectItemEvent extends FavouriteEvents {
+  final FavouriteItemModel favouriteItemModel;
+
+  const SelectItemEvent({required this.favouriteItemModel});
+}
+
+class UnSelectItemEvent extends FavouriteEvents {
+  final FavouriteItemModel favouriteItemModel;
+
+  const UnSelectItemEvent({required this.favouriteItemModel});
+}
+
+class DeleteEvent extends FavouriteEvents {}
